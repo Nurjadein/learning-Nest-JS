@@ -5,11 +5,11 @@ import { Controller, Get, Param } from '@nestjs/common';
 export class UsersController {
   constructor(private usersService: UsersService) {}
   @Get()
-  getUsers(): Array<any> {
-    return [{ id: 0 }];
+  getUsers(): any {
+    return this.usersService.findAll();
   }
   @Get(':id')
   getUsersById(@Param('id') id: string): any {
-    return { id };
+    return this.usersService.findById(id);
   }
 }
